@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prof. Eleanor Marsh — Economics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1814;
+    --ink-mid: #4a4640;
+    --ink-light: #8a8680;
+    --paper: #faf9f6;
+    --paper-warm: #f3f1ec;
+    --rule: #e0ddd6;
+    --accent: #2a4a7f;
+    --accent-light: #e8edf5;
+    --serif: 'Lora', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 max(2rem, 8vw);
+    display: flex; justify-content: space-between; align-items: center;
+    height: 60px;
+  }
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 0.8rem; font-weight: 400; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--ink-light);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* LAYOUT */
+  main { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+  section { padding: 5rem 0; border-bottom: 1px solid var(--rule); }
+  section:last-child { border-bottom: none; }
+
+  /* HERO */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 4rem;
+    align-items: start;
+    padding-top: 6rem;
+  }
+  .hero-text h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.3rem;
+  }
+  .hero-text .title {
+    font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-light);
+    margin-bottom: 0.15rem;
+  }
+  .hero-text .institution {
+    font-size: 0.9rem; color: var(--accent);
+    margin-bottom: 2rem;
+  }
+  .hero-text p {
+    font-size: 1rem; color: var(--ink-mid); line-height: 1.8;
+    max-width: 52ch; margin-bottom: 1rem;
+  }
+  .hero-contacts { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+  .contact-link {
+    font-size: 0.78rem; font-weight: 400; letter-spacing: 0.04em;
+    text-transform: uppercase; color: var(--accent);
+    text-decoration: none; border-bottom: 1px solid var(--accent);
+    padding-bottom: 1px; transition: opacity 0.2s;
+  }
+  .contact-link:hover { opacity: 0.65; }
+
+  /* Portrait placeholder */
+  .portrait {
+    width: 100%; aspect-ratio: 3/4;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-light); font-size: 0.75rem; letter-spacing: 0.06em;
+    text-transform: uppercase;
+    position: relative; overflow: hidden;
+  }
+  .portrait::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg, transparent, transparent 20px,
+      rgba(0,0,0,0.015) 20px, rgba(0,0,0,0.015) 21px
+    );
+  }
+  .portrait-label { position: relative; z-index: 1; }
+
+  /* RESEARCH */
+  .section-header {
+    display: flex; align-items: baseline; gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  .section-header h2 {
+    font-family: var(--serif); font-size: 1.6rem; font-weight: 400;
+  }
+  .section-header .section-line {
+    flex: 1; height: 1px; background: var(--rule);
+  }
+
+  .research-areas {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .research-tag {
+    padding: 0.75rem 1rem;
+    background: var(--accent-light);
+    font-size: 0.82rem; font-weight: 400; color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  .research-statement {
+    font-size: 1.05rem; color: var(--ink-mid); line-height: 1.85;
+    max-width: 68ch; font-style: italic; font-family: var(--serif);
+    padding-left: 1.5rem; border-left: 2px solid var(--accent);
+  }
+
+  /* PUBLICATIONS */
+  .pub-filter {
+    display: flex; gap: 0.75rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+  }
+  .filter-btn {
+    font-size: 0.75rem; font-weight: 400; letter-spacing: 0.05em;
+    text-transform: uppercase; padding: 0.4rem 1rem;
+    border: 1px solid var(--rule); background: transparent;
+    color: var(--ink-light); cursor: pointer; transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent); color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  .pub-list { display: flex; flex-direction: column; gap: 0; }
+  .pub-item {
+    padding: 1.5rem 0; border-bottom: 1px solid var(--rule);
+    display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem;
+    align-items: start; transition: background 0.15s;
+  }
+  .pub-item:first-child { border-top: 1px solid var(--rule); }
+  .pub-year {
+    font-size: 0.78rem; color: var(--ink-light); font-weight: 400;
+    letter-spacing: 0.04em; padding-top: 0.15rem;
+  }
+  .pub-content h3 {
+    font-family: var(--serif); font-size: 1rem; font-weight: 400;
+    line-height: 1.4; margin-bottom: 0.4rem;
+  }
+  .pub-content h3 a {
+    color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .pub-content h3 a:hover { border-color: var(--accent); color: var(--accent); }
+  .pub-meta { font-size: 0.83rem; color: var(--ink-light); }
+  .pub-meta em { font-style: italic; }
+  .pub-tags { margin-top: 0.6rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .pub-tag {
+    font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase;
+    padding: 0.2rem 0.6rem; background: var(--paper-warm);
+    color: var(--ink-light); border: 1px solid var(--rule);
+  }
+  .pub-tag.wp { color: var(--accent); border-color: var(--accent-light); background: var(--accent-light); }
+
+  /* TEACHING */
+  .honors-list { display: flex; flex-direction: column; }
+  .honor-item {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .honor-item:first-child { border-top: 1px solid var(--rule); }
+  .honor-year { font-size: 0.78rem; color: var(--ink-light); letter-spacing: 0.04em; }
+  .honor-name { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--ink); }
+
+  .service-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .service-label {
+    font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem;
+  }
+  .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .service-list li { font-size: 0.95rem; color: var(--ink-mid); }
+
+  .teaching-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .service-label {
+    font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem;
+  }
+  .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .service-list li { font-size: 0.95rem; color: var(--ink-mid); } { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .teaching-level {
+    font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem;
+  }
+  .course-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+  .course-list li {
+    font-family: var(--serif); font-size: 1rem; font-weight: 400;
+    color: var(--ink); display: flex; justify-content: space-between; align-items: baseline;
+    gap: 1rem;
+  }
+  .course-code { font-family: var(--sans); font-size: 0.78rem; color: var(--ink-light); white-space: nowrap; }
+
+  /* FOOTER */
+  footer {
+    max-width: 900px; margin: 0 auto; padding: 2.5rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.78rem; color: var(--ink-light);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    #about { grid-template-columns: 1fr; }
+    .portrait { display: none; }
+    .research-areas { grid-template-columns: 1fr 1fr; }
+    .course-grid { grid-template-columns: 1fr; }
+    .nav-links { gap: 1rem; }
+    .pub-item { grid-template-columns: 56px 1fr; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#about" class="nav-name">Eleanor Marsh</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#publications">Publications</a>
+    <a href="#honors">Honors</a>
+    <a href="#teaching">Teaching</a>
+    <a href="#service">Service</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ABOUT / HERO -->
+  <section id="about">
+    <div class="hero-text">
+      <div class="title">Associate Professor of Economics</div>
+      <h1>Eleanor<br>Marsh</h1>
+      <div class="institution">Department of Economics · Hartfield University</div>
+      <p>I am an applied economist working at the intersection of labor markets, institutional economics, and public policy. My research examines how firms and workers adapt to technological change, with a focus on wage inequality and organizational structure.</p>
+      <p>Before joining Hartfield, I was a postdoctoral fellow at the National Bureau of Economic Research and held visiting positions at LSE and the University of Chicago Booth School of Business.</p>
+      <div class="hero-contacts">
+        <a href="mailto:e.marsh@hartfield.edu" class="contact-link">e.marsh@hartfield.edu</a>
+        <a href="#" class="contact-link">Curriculum Vitae</a>
+        <a href="#" class="contact-link">Google Scholar</a>
+        <a href="#" class="contact-link">SSRN</a>
+      </div>
+    </div>
+    <div class="portrait">
+      <span class="portrait-label">Photo</span>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research">
+    <div class="section-header">
+      <h2>Research</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="research-areas">
+      <div class="research-tag">Labor Economics</div>
+      <div class="research-tag">Firm Organization</div>
+      <div class="research-tag">Wage Inequality</div>
+      <div class="research-tag">Automation & Technology</div>
+      <div class="research-tag">Public Policy</div>
+      <div class="research-tag">Applied Econometrics</div>
+    </div>
+    <p class="research-statement">
+      "My work asks how the internal structure of firms shapes workers' wages and career outcomes — and how technological disruption alters these relationships over time."
+    </p>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="section-header">
+      <h2>Publications</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="pub-filter">
+      <button class="filter-btn active" onclick="filterPubs('all', this)">All</button>
+      <button class="filter-btn" onclick="filterPubs('journal', this)">Journal Articles</button>
+      <button class="filter-btn" onclick="filterPubs('working', this)">Working Papers</button>
+      <button class="filter-btn" onclick="filterPubs('book', this)">Book Chapters</button>
+    </div>
+
+    <div class="pub-list" id="pub-list">
+
+      <div class="pub-item" data-type="working">
+        <div class="pub-year">2025</div>
+        <div class="pub-content">
+          <h3><a href="#">Automation Exposure and the Gender Wage Gap: Evidence from Linked Employer-Employee Data</a></h3>
+          <div class="pub-meta">with James Holloway and Priya Venkatesan</div>
+          <div class="pub-tags"><span class="pub-tag wp">Working Paper</span><span class="pub-tag">NBER WP 32814</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="journal">
+        <div class="pub-year">2024</div>
+        <div class="pub-content">
+          <h3><a href="#">Firm Hierarchy, Wage Setting, and the Distribution of Rents</a></h3>
+          <div class="pub-meta"><em>American Economic Review</em>, 114(4), pp. 1102–1147</div>
+          <div class="pub-tags"><span class="pub-tag">Journal Article</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="journal">
+        <div class="pub-year">2023</div>
+        <div class="pub-content">
+          <h3><a href="#">Task Content, Occupational Mobility, and the Returns to Reskilling</a></h3>
+          <div class="pub-meta"><em>Quarterly Journal of Economics</em>, 138(2), pp. 887–942</div>
+          <div class="pub-tags"><span class="pub-tag">Journal Article</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="journal">
+        <div class="pub-year">2022</div>
+        <div class="pub-content">
+          <h3><a href="#">Monopsony in Motion: Employer Market Power and Worker Welfare</a></h3>
+          <div class="pub-meta"><em>Journal of Political Economy</em>, 130(9), pp. 2310–2358</div>
+          <div class="pub-tags"><span class="pub-tag">Journal Article</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="working">
+        <div class="pub-year">2024</div>
+        <div class="pub-content">
+          <h3><a href="#">Minimum Wages, Firm Adjustment, and the Employment Margin</a></h3>
+          <div class="pub-meta">Revise & Resubmit, <em>Review of Economic Studies</em></div>
+          <div class="pub-tags"><span class="pub-tag wp">Working Paper</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="book">
+        <div class="pub-year">2021</div>
+        <div class="pub-content">
+          <h3><a href="#">Labor Market Polarization and the Rise of Non-Standard Work</a></h3>
+          <div class="pub-meta">In: <em>The Oxford Handbook of the Economics of Work</em>, eds. Card & Autor. Oxford University Press.</div>
+          <div class="pub-tags"><span class="pub-tag">Book Chapter</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HONORS -->
+  <section id="honors">
+    <div class="section-header">
+      <h2>Selected Honors</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="honors-list">
+      <div class="honor-item">
+        <span class="honor-year">2024</span>
+        <span class="honor-name">Excellence in Research Award, Hartfield University</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-year">2023</span>
+        <span class="honor-name">Alfred P. Sloan Research Fellowship</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-year">2022</span>
+        <span class="honor-name">IZA Young Labor Economist Award</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-year">2021</span>
+        <span class="honor-name">Best Paper Award, Society of Labor Economists Annual Meeting</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-year">2019</span>
+        <span class="honor-name">National Science Foundation CAREER Award</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-year">2017</span>
+        <span class="honor-name">Dissertation Fellowship, Russell Sage Foundation</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <div class="section-header">
+      <h2>Teaching</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="teaching-cols">
+      <div class="teaching-group">
+        <div class="teaching-level">Undergraduate</div>
+        <ul class="course-list">
+          <li>Principles of Macroeconomics <span class="course-code">ECON 101</span></li>
+          <li>Labor Economics <span class="course-code">ECON 340</span></li>
+        </ul>
+      </div>
+      <div class="teaching-group">
+        <div class="teaching-level">Graduate</div>
+        <ul class="course-list">
+          <li>Applied Econometrics II <span class="course-code">ECON 812</span></li>
+          <li>Topics in Labor and Personnel Economics <span class="course-code">ECON 950</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE -->
+  <section id="service">
+    <div class="section-header">
+      <h2>Service</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="service-cols">
+      <div class="service-group">
+        <div class="service-label">Referee</div>
+        <ul class="service-list">
+          <li>American Economic Review</li>
+          <li>Quarterly Journal of Economics</li>
+          <li>Journal of Political Economy</li>
+          <li>Review of Economic Studies</li>
+          <li>Journal of Labor Economics</li>
+          <li>Review of Economics and Statistics</li>
+        </ul>
+      </div>
+      <div class="service-group">
+        <div class="service-label">Department & University</div>
+        <ul class="service-list">
+          <li>Graduate Admissions Committee, 2022–present</li>
+          <li>Curriculum Committee, 2021–2023</li>
+          <li>Faculty Senate Representative, 2020–2022</li>
+        </ul>
+        <div class="service-label" style="margin-top: 2rem;">Conference Organization</div>
+        <ul class="service-list">
+          <li>Co-organizer, NBER Labor Studies Meeting, 2024</li>
+          <li>Program Committee, SOLE Annual Meeting, 2023</li>
+          <li>Program Committee, EEA Congress, 2022</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Eleanor Marsh · Hartfield University · Department of Economics</span>
+  <span>Last updated May 2025</span>
+</footer>
+
+<script>
+function filterPubs(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pub-item').forEach(item => {
+    item.style.display = (type === 'all' || item.dataset.type === type) ? 'grid' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
