@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prof. Eleanor Marsh — Economics</title>
+<title>Mingwen Yang — Information Systems</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -66,10 +66,7 @@
 
   /* HERO */
   #about {
-    display: grid;
-    grid-template-columns: 1fr 260px;
-    gap: 4rem;
-    align-items: start;
+    display: block;
     padding-top: 6rem;
   }
   .hero-text h1 {
@@ -92,6 +89,13 @@
     font-size: 1rem; color: var(--ink-mid); line-height: 1.8;
     max-width: 52ch; margin-bottom: 1rem;
   }
+  .research-interests { margin-top: 1.5rem; }
+  .ri-row { display: flex; gap: 0.5rem; align-items: baseline; margin-bottom: 0.4rem; flex-wrap: wrap; }
+  .ri-label {
+    font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-light); min-width: 100px;
+  }
+  .ri-values { font-size: 0.9rem; color: var(--ink-mid); }
   .hero-contacts { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
   .contact-link {
     font-size: 0.78rem; font-weight: 400; letter-spacing: 0.04em;
@@ -121,7 +125,7 @@
   }
   .portrait-label { position: relative; z-index: 1; }
 
-  /* RESEARCH */
+  /* SECTION HEADER */
   .section-header {
     display: flex; align-items: baseline; gap: 1.5rem;
     margin-bottom: 3rem;
@@ -131,23 +135,6 @@
   }
   .section-header .section-line {
     flex: 1; height: 1px; background: var(--rule);
-  }
-
-  .research-areas {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
-    margin-bottom: 2.5rem;
-  }
-  .research-tag {
-    padding: 0.75rem 1rem;
-    background: var(--accent-light);
-    font-size: 0.82rem; font-weight: 400; color: var(--accent);
-    letter-spacing: 0.02em;
-  }
-
-  .research-statement {
-    font-size: 1.05rem; color: var(--ink-mid); line-height: 1.85;
-    max-width: 68ch; font-style: italic; font-family: var(--serif);
-    padding-left: 1.5rem; border-left: 2px solid var(--accent);
   }
 
   /* PUBLICATIONS */
@@ -165,11 +152,11 @@
     background: var(--accent-light);
   }
 
-  .pub-list { display: flex; flex-direction: column; gap: 0; }
+  .pub-list { display: flex; flex-direction: column; }
   .pub-item {
     padding: 1.5rem 0; border-bottom: 1px solid var(--rule);
     display: grid; grid-template-columns: 80px 1fr; gap: 1.5rem;
-    align-items: start; transition: background 0.15s;
+    align-items: start;
   }
   .pub-item:first-child { border-top: 1px solid var(--rule); }
   .pub-year {
@@ -187,6 +174,10 @@
   .pub-content h3 a:hover { border-color: var(--accent); color: var(--accent); }
   .pub-meta { font-size: 0.83rem; color: var(--ink-light); }
   .pub-meta em { font-style: italic; }
+  .pub-award {
+    font-size: 0.78rem; color: var(--ink-mid); margin-top: 0.4rem;
+    font-style: italic;
+  }
   .pub-tags { margin-top: 0.6rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
   .pub-tag {
     font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase;
@@ -195,7 +186,7 @@
   }
   .pub-tag.wp { color: var(--accent); border-color: var(--accent-light); background: var(--accent-light); }
 
-  /* TEACHING */
+  /* HONORS */
   .honors-list { display: flex; flex-direction: column; }
   .honor-item {
     display: grid; grid-template-columns: 80px 1fr;
@@ -206,32 +197,36 @@
   .honor-year { font-size: 0.78rem; color: var(--ink-light); letter-spacing: 0.04em; }
   .honor-name { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--ink); }
 
-  .service-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-  .service-label {
-    font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem;
-  }
-  .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .service-list li { font-size: 0.95rem; color: var(--ink-mid); }
-
-  .teaching-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-  .service-label {
-    font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem;
-  }
-  .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-  .service-list li { font-size: 0.95rem; color: var(--ink-mid); } { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  /* TEACHING */
+  .teaching-cols { display: flex; flex-direction: column; gap: 2.5rem; }
   .teaching-level {
     font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
     text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem;
   }
+  .teaching-group + .teaching-group { margin-top: 0; }
   .course-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
   .course-list li {
     font-family: var(--serif); font-size: 1rem; font-weight: 400;
     color: var(--ink); display: flex; justify-content: space-between; align-items: baseline;
     gap: 1rem;
   }
-  .course-code { font-family: var(--sans); font-size: 0.78rem; color: var(--ink-light); white-space: nowrap; }
+  .course-level-tag {
+    font-family: var(--sans); font-size: 0.72rem; color: var(--ink-light); white-space: nowrap;
+  }
+  .teaching-school {
+    font-size: 0.82rem; color: var(--ink-mid); margin-bottom: 1.25rem; font-style: italic;
+  }
+  .teaching-block + .teaching-block { margin-top: 2.5rem; }
+
+  /* SERVICE */
+  .service-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .service-label {
+    font-size: 0.7rem; font-weight: 400; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem;
+  }
+  .service-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .service-list li { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.5; }
+  .service-group + .service-group { margin-top: 2rem; }
 
   /* FOOTER */
   footer {
@@ -244,21 +239,19 @@
   @media (max-width: 700px) {
     #about { grid-template-columns: 1fr; }
     .portrait { display: none; }
-    .research-areas { grid-template-columns: 1fr 1fr; }
-    .course-grid { grid-template-columns: 1fr; }
+    .teaching-cols, .service-cols { grid-template-columns: 1fr; }
     .nav-links { gap: 1rem; }
-    .pub-item { grid-template-columns: 56px 1fr; gap: 1rem; }
+    .pub-item, .honor-item { grid-template-columns: 56px 1fr; gap: 1rem; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#about" class="nav-name">Eleanor Marsh</a>
+  <a href="#about" class="nav-name">Mingwen Yang</a>
   <div class="nav-links">
     <a href="#about">About</a>
-    <a href="#research">Research</a>
-    <a href="#publications">Publications</a>
+    <a href="#publications">Research</a>
     <a href="#honors">Honors</a>
     <a href="#teaching">Teaching</a>
     <a href="#service">Service</a>
@@ -270,46 +263,33 @@
   <!-- ABOUT / HERO -->
   <section id="about">
     <div class="hero-text">
-      <div class="title">Associate Professor of Economics</div>
-      <h1>Eleanor<br>Marsh</h1>
-      <div class="institution">Department of Economics · Hartfield University</div>
-      <p>I am an applied economist working at the intersection of labor markets, institutional economics, and public policy. My research examines how firms and workers adapt to technological change, with a focus on wage inequality and organizational structure.</p>
-      <p>Before joining Hartfield, I was a postdoctoral fellow at the National Bureau of Economic Research and held visiting positions at LSE and the University of Chicago Booth School of Business.</p>
+      <div class="title">Associate Professor of Information Systems</div>
+      <h1>Mingwen Yang</h1>
+      <div class="institution">Grant I. Butterbaugh Professor · Foster School of Business, University of Washington</div>
+      <p>Associate Editor at <em>MIS Quarterly</em> and <em>Information &amp; Management</em>.</p>
+      <div class="research-interests">
+        <div class="ri-row">
+          <span class="ri-label">Topics</span>
+          <span class="ri-values">Fintech, Social Trading, Cybersecurity, AI</span>
+        </div>
+        <div class="ri-row">
+          <span class="ri-label">Methods</span>
+          <span class="ri-values">Causal Inference, Optimization, Game Theory, Machine Learning</span>
+        </div>
+      </div>
       <div class="hero-contacts">
-        <a href="mailto:e.marsh@hartfield.edu" class="contact-link">e.marsh@hartfield.edu</a>
-        <a href="#" class="contact-link">Curriculum Vitae</a>
-        <a href="#" class="contact-link">Google Scholar</a>
+        <a href="mailto:mingweny@uw.edu" class="contact-link">mingweny@uw.edu</a>
+<a href="#" class="contact-link">Google Scholar</a>
         <a href="#" class="contact-link">SSRN</a>
       </div>
     </div>
-    <div class="portrait">
-      <span class="portrait-label">Photo</span>
-    </div>
-  </section>
 
-  <!-- RESEARCH -->
-  <section id="research">
-    <div class="section-header">
-      <h2>Research</h2>
-      <div class="section-line"></div>
-    </div>
-    <div class="research-areas">
-      <div class="research-tag">Labor Economics</div>
-      <div class="research-tag">Firm Organization</div>
-      <div class="research-tag">Wage Inequality</div>
-      <div class="research-tag">Automation & Technology</div>
-      <div class="research-tag">Public Policy</div>
-      <div class="research-tag">Applied Econometrics</div>
-    </div>
-    <p class="research-statement">
-      "My work asks how the internal structure of firms shapes workers' wages and career outcomes — and how technological disruption alters these relationships over time."
-    </p>
   </section>
 
   <!-- PUBLICATIONS -->
   <section id="publications">
     <div class="section-header">
-      <h2>Publications</h2>
+      <h2>Research</h2>
       <div class="section-line"></div>
     </div>
 
@@ -317,25 +297,15 @@
       <button class="filter-btn active" onclick="filterPubs('all', this)">All</button>
       <button class="filter-btn" onclick="filterPubs('journal', this)">Journal Articles</button>
       <button class="filter-btn" onclick="filterPubs('working', this)">Working Papers</button>
-      <button class="filter-btn" onclick="filterPubs('book', this)">Book Chapters</button>
     </div>
 
     <div class="pub-list" id="pub-list">
 
-      <div class="pub-item" data-type="working">
-        <div class="pub-year">2025</div>
-        <div class="pub-content">
-          <h3><a href="#">Automation Exposure and the Gender Wage Gap: Evidence from Linked Employer-Employee Data</a></h3>
-          <div class="pub-meta">with James Holloway and Priya Venkatesan</div>
-          <div class="pub-tags"><span class="pub-tag wp">Working Paper</span><span class="pub-tag">NBER WP 32814</span></div>
-        </div>
-      </div>
-
       <div class="pub-item" data-type="journal">
         <div class="pub-year">2024</div>
         <div class="pub-content">
-          <h3><a href="#">Firm Hierarchy, Wage Setting, and the Distribution of Rents</a></h3>
-          <div class="pub-meta"><em>American Economic Review</em>, 114(4), pp. 1102–1147</div>
+          <h3><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3802038">Social trading, communication, and networks</a></h3>
+          <div class="pub-meta">Jiaying Deng, Mingwen Yang, Matthias Pelster, Yong Tan · <em>Information Systems Research</em>, Vol. 35 (4): 1546–1564</div>
           <div class="pub-tags"><span class="pub-tag">Journal Article</span></div>
         </div>
       </div>
@@ -343,8 +313,8 @@
       <div class="pub-item" data-type="journal">
         <div class="pub-year">2023</div>
         <div class="pub-content">
-          <h3><a href="#">Task Content, Occupational Mobility, and the Returns to Reskilling</a></h3>
-          <div class="pub-meta"><em>Quarterly Journal of Economics</em>, 138(2), pp. 887–942</div>
+          <h3><a href="https://misq.umn.edu/responding-to-online-reviews-in-competitive-markets-a-controlled-diffusion-approach.html">Responding to Online Reviews in Competitive Markets: A Controlled Diffusion Approach</a></h3>
+          <div class="pub-meta">Mingwen Yang, Zhiqiang (Eric) Zheng, Vijay Mookerjee, Hongyu Chen · <em>MIS Quarterly</em>, Vol. 47 (1): 161–194</div>
           <div class="pub-tags"><span class="pub-tag">Journal Article</span></div>
         </div>
       </div>
@@ -352,27 +322,104 @@
       <div class="pub-item" data-type="journal">
         <div class="pub-year">2022</div>
         <div class="pub-content">
-          <h3><a href="#">Monopsony in Motion: Employer Market Power and Worker Welfare</a></h3>
-          <div class="pub-meta"><em>Journal of Political Economy</em>, 130(9), pp. 2310–2358</div>
+          <h3><a href="https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2021.4147">How Much Is Financial Advice Worth? The Transparency-Revenue Tension in Social Trading</a></h3>
+          <div class="pub-meta">Mingwen Yang, Zhiqiang (Eric) Zheng, Vijay Mookerjee · <em>Management Science</em>, Vol. 68 (7): 5252–5268</div>
+          <div class="pub-award">★ INFORMS Annual Meeting e-Business Cluster Best Paper Award, Runner-up, 2018</div>
+          <div class="pub-tags"><span class="pub-tag">Journal Article</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="journal">
+        <div class="pub-year">2021</div>
+        <div class="pub-content">
+          <h3><a href="https://pubsonline.informs.org/doi/abs/10.1287/isre.2021.1005">The Race for Online Reputation: Implications for Firms, Platforms, and Consumers</a></h3>
+          <div class="pub-meta">Mingwen Yang, Zhiqiang (Eric) Zheng, Vijay Mookerjee · <em>Information Systems Research</em>, Vol. 32 (4): 1262–1280</div>
+          <div class="pub-tags"><span class="pub-tag">Journal Article</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="journal">
+        <div class="pub-year">2021</div>
+        <div class="pub-content">
+          <h3><a href="https://onlinelibrary.wiley.com/doi/full/10.1111/poms.13274">Cloud Service Model's Role in Provider and Users Security Investment Incentives</a></h3>
+          <div class="pub-meta">Mingwen Yang, Varghese S. Jacob, Srinivasan Raghunathan · <em>Production and Operations Management</em>, Vol. 30 (2): 419–437</div>
+          <div class="pub-tags"><span class="pub-tag">Journal Article</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="journal">
+        <div class="pub-year">2019</div>
+        <div class="pub-content">
+          <h3><a href="https://pubsonline.informs.org/doi/abs/10.1287/isre.2018.0805">Prescribing Response Strategies to Manage Customer Opinions: A Stochastic Differential Equation Approach</a></h3>
+          <div class="pub-meta">Mingwen Yang, Zhiqiang (Eric) Zheng, Vijay Mookerjee · <em>Information Systems Research</em>, Vol. 30 (2): 351–374</div>
+          <div class="pub-award">★ Lead Article</div>
+          <div class="pub-tags"><span class="pub-tag">Journal Article</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="journal">
+        <div class="pub-year">2014</div>
+        <div class="pub-content">
+          <h3><a href="https://www.tandfonline.com/doi/abs/10.1080/23270012.2014.889911">A predictive DEA model for outlier detection</a></h3>
+          <div class="pub-meta">Mingwen Yang, Guohua Wan, Zhiqiang (Eric) Zheng · <em>Journal of Management Analytics</em>, Vol. 1 (1): 20–41</div>
           <div class="pub-tags"><span class="pub-tag">Journal Article</span></div>
         </div>
       </div>
 
       <div class="pub-item" data-type="working">
-        <div class="pub-year">2024</div>
+        <div class="pub-year">WP</div>
         <div class="pub-content">
-          <h3><a href="#">Minimum Wages, Firm Adjustment, and the Employment Margin</a></h3>
-          <div class="pub-meta">Revise & Resubmit, <em>Review of Economic Studies</em></div>
+          <h3><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4528456">Coevolution of Trader Networks and Follower Dynamics in Social Trading</a></h3>
+          <div class="pub-meta">Ye Liu, Mingwen Yang, Yong Tan</div>
           <div class="pub-tags"><span class="pub-tag wp">Working Paper</span></div>
         </div>
       </div>
 
-      <div class="pub-item" data-type="book">
-        <div class="pub-year">2021</div>
+      <div class="pub-item" data-type="working">
+        <div class="pub-year">WP</div>
         <div class="pub-content">
-          <h3><a href="#">Labor Market Polarization and the Rise of Non-Standard Work</a></h3>
-          <div class="pub-meta">In: <em>The Oxford Handbook of the Economics of Work</em>, eds. Card & Autor. Oxford University Press.</div>
-          <div class="pub-tags"><span class="pub-tag">Book Chapter</span></div>
+          <h3><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4750389">The Interplay of Opinions and Trading Behavior: Understanding Cryptocurrency Adoption Dynamics</a></h3>
+          <div class="pub-meta">Ye Liu, Mingwen Yang, Matthias Pelster, Yong Tan</div>
+          <div class="pub-award">★ INFORMS Social Media Analytics Section Best Student Paper Award, Winner, 2024</div>
+          <div class="pub-tags"><span class="pub-tag wp">Working Paper</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="working">
+        <div class="pub-year">WP</div>
+        <div class="pub-content">
+          <h3>Oblivious Quality Competition: Model and Evidence</h3>
+          <div class="pub-meta">Mingwen Yang, Yonghua Ji, Vijay Mookerjee, Cheng Nie</div>
+          <div class="pub-tags"><span class="pub-tag wp">Working Paper</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="working">
+        <div class="pub-year">WP</div>
+        <div class="pub-content">
+          <h3><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4825888">Curbing Anarchy in Social Trading Platforms</a></h3>
+          <div class="pub-meta">Kai Sun, Mingwen Yang, Vijay Mookerjee</div>
+          <div class="pub-award">★ INFORMS Annual Meeting Finance Section Student Best Paper, Finalist, 2023</div>
+          <div class="pub-tags"><span class="pub-tag wp">Working Paper</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="working">
+        <div class="pub-year">WP</div>
+        <div class="pub-content">
+          <h3>Are You Over-Tipping? Fairness and Incentives in Pre-Service Tipping</h3>
+          <div class="pub-meta">Kai Sun, Mingwen Yang, Vijay Mookerjee</div>
+          <div class="pub-award">★ INFORMS Annual Meeting e-Business Cluster Best Paper Award, Runner-up, 2021</div>
+          <div class="pub-tags"><span class="pub-tag wp">Working Paper</span></div>
+        </div>
+      </div>
+
+      <div class="pub-item" data-type="working">
+        <div class="pub-year">WP</div>
+        <div class="pub-content">
+          <h3>The Closer You are, the Faster You are? Sequential Threshold Effects in Open Innovation</h3>
+          <div class="pub-meta">Hong Hong, Ao Sun, Dapeng Xu, Mingwen Yang</div>
+          <div class="pub-tags"><span class="pub-tag wp">Working Paper</span></div>
         </div>
       </div>
 
@@ -388,27 +435,27 @@
     <div class="honors-list">
       <div class="honor-item">
         <span class="honor-year">2024</span>
-        <span class="honor-name">Excellence in Research Award, Hartfield University</span>
+        <span class="honor-name">Association for Information Systems Early Career Award</span>
+      </div>
+      <div class="honor-item">
+        <span class="honor-year">2024</span>
+        <span class="honor-name">INFORMS Information Systems Society Gordon B. Davis Young Scholar Award</span>
       </div>
       <div class="honor-item">
         <span class="honor-year">2023</span>
-        <span class="honor-name">Alfred P. Sloan Research Fellowship</span>
+        <span class="honor-name">Poets &amp; Quants Top 50 Best Undergraduate Business Professors</span>
       </div>
       <div class="honor-item">
-        <span class="honor-year">2022</span>
-        <span class="honor-name">IZA Young Labor Economist Award</span>
+        <span class="honor-year">2023</span>
+        <span class="honor-name">Dean's Award for Excellence in Research, Foster School of Business</span>
       </div>
       <div class="honor-item">
-        <span class="honor-year">2021</span>
-        <span class="honor-name">Best Paper Award, Society of Labor Economists Annual Meeting</span>
+        <span class="honor-year">2023</span>
+        <span class="honor-name">Ph.D. Program Mentoring Award, Foster School of Business</span>
       </div>
       <div class="honor-item">
         <span class="honor-year">2019</span>
-        <span class="honor-name">National Science Foundation CAREER Award</span>
-      </div>
-      <div class="honor-item">
-        <span class="honor-year">2017</span>
-        <span class="honor-name">Dissertation Fellowship, Russell Sage Foundation</span>
+        <span class="honor-name">Runner-up, INFORMS Information Systems Society Nunamaker-Chen Dissertation Award</span>
       </div>
     </div>
   </section>
@@ -420,18 +467,20 @@
       <div class="section-line"></div>
     </div>
     <div class="teaching-cols">
-      <div class="teaching-group">
-        <div class="teaching-level">Undergraduate</div>
+      <div class="teaching-block">
+        <div class="teaching-school">University of Washington</div>
         <ul class="course-list">
-          <li>Principles of Macroeconomics <span class="course-code">ECON 101</span></li>
-          <li>Labor Economics <span class="course-code">ECON 340</span></li>
+          <li>Data Management &amp; SQL <span class="course-level-tag">Master</span></li>
+          <li>Programming Essentials <span class="course-level-tag">Master</span></li>
+          <li>Advanced Research Topics in Information Systems <span class="course-level-tag">PhD</span></li>
+          <li>Networks and Cybersecurity <span class="course-level-tag">Undergraduate</span></li>
+          <li>Business Data Communications <span class="course-level-tag">Undergraduate</span></li>
         </ul>
       </div>
-      <div class="teaching-group">
-        <div class="teaching-level">Graduate</div>
+      <div class="teaching-block">
+        <div class="teaching-school">University of Texas at Dallas</div>
         <ul class="course-list">
-          <li>Applied Econometrics II <span class="course-code">ECON 812</span></li>
-          <li>Topics in Labor and Personnel Economics <span class="course-code">ECON 950</span></li>
+          <li>Object-Oriented Programming <span class="course-level-tag">Undergraduate</span></li>
         </ul>
       </div>
     </div>
@@ -444,30 +493,34 @@
       <div class="section-line"></div>
     </div>
     <div class="service-cols">
-      <div class="service-group">
-        <div class="service-label">Referee</div>
-        <ul class="service-list">
-          <li>American Economic Review</li>
-          <li>Quarterly Journal of Economics</li>
-          <li>Journal of Political Economy</li>
-          <li>Review of Economic Studies</li>
-          <li>Journal of Labor Economics</li>
-          <li>Review of Economics and Statistics</li>
-        </ul>
+      <div>
+        <div class="service-group">
+          <div class="service-label">Conference Leadership</div>
+          <ul class="service-list">
+            <li>Conference Co-Chair: CIST 2025, Atlanta, GA; TEIS 2024, Seattle, WA</li>
+            <li>Cluster/Track Co-Chair: POMS Annual Meeting IS &amp; OM Track 2026; INFORMS e-Business Cluster 2024</li>
+          </ul>
+        </div>
+        <div class="service-group">
+          <div class="service-label">Society Roles</div>
+          <ul class="service-list">
+            <li>Webmaster, INFORMS Information Systems Society, 2023–2025</li>
+            <li>Treasurer, INFORMS e-Business Section, 2025–present</li>
+            <li>VP Meetings, POMS College of Operations in AI, Platforms, and Exponential Technologies, 2026–present</li>
+          </ul>
+        </div>
       </div>
-      <div class="service-group">
-        <div class="service-label">Department & University</div>
-        <ul class="service-list">
-          <li>Graduate Admissions Committee, 2022–present</li>
-          <li>Curriculum Committee, 2021–2023</li>
-          <li>Faculty Senate Representative, 2020–2022</li>
-        </ul>
-        <div class="service-label" style="margin-top: 2rem;">Conference Organization</div>
-        <ul class="service-list">
-          <li>Co-organizer, NBER Labor Studies Meeting, 2024</li>
-          <li>Program Committee, SOLE Annual Meeting, 2023</li>
-          <li>Program Committee, EEA Congress, 2022</li>
-        </ul>
+      <div>
+        <div class="service-group">
+          <div class="service-label">Editorial</div>
+          <ul class="service-list">
+            <li>Associate Editor, MIS Quarterly, 2026–present</li>
+            <li>Associate Editor, Information &amp; Management, 2024–present</li>
+            <li>Associate Editor, ICIS, 2021–2024</li>
+            <li>Associate Editor, Information Technology and Management, 2020–2025</li>
+            <li>Editorial Review Board, Production and Operations Management, 2023–present</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -475,8 +528,8 @@
 </main>
 
 <footer>
-  <span>Eleanor Marsh · Hartfield University · Department of Economics</span>
-  <span>Last updated May 2025</span>
+  <span>Mingwen Yang · Foster School of Business · University of Washington</span>
+  <span>© 2026 Mingwen Yang</span>
 </footer>
 
 <script>
